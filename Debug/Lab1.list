@@ -27,9 +27,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  00020014  2**0
                   CONTENTS, READONLY
- 12 .debug_info   000030d7  00000000  00000000  0002003d  2**0
+ 12 .debug_info   000030d5  00000000  00000000  0002003d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00000e9f  00000000  00000000  00023114  2**0
+ 13 .debug_abbrev 00000e9f  00000000  00000000  00023112  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  14 .debug_aranges 00000430  00000000  00000000  00023fb8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -77,12 +77,12 @@ Disassembly of section .text:
  8000148:	080013b0 	.word	0x080013b0
 
 0800014c <Phase1_GreenOn>:
+//int count_red = 5;
 int count_yellow = 2;
 int count_green = 3;
 int counter = 0;
 
-void Phase1_GreenOn()
-{
+void Phase1_GreenOn(){
  800014c:	b580      	push	{r7, lr}
  800014e:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(GREEN_1_GPIO_Port, GREEN_1_Pin, GPIO_PIN_RESET);
@@ -96,8 +96,7 @@ void Phase1_GreenOn()
  8000160:	40010800 	.word	0x40010800
 
 08000164 <Phase1_GreenOff>:
-void Phase1_GreenOff()
-{
+void Phase1_GreenOff(){
  8000164:	b580      	push	{r7, lr}
  8000166:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(GREEN_1_GPIO_Port, GREEN_1_Pin, GPIO_PIN_SET);;
@@ -112,8 +111,7 @@ void Phase1_GreenOff()
 
 0800017c <Phase1_YellowOn>:
 
-void Phase1_YellowOn()
-{
+void Phase1_YellowOn(){
  800017c:	b580      	push	{r7, lr}
  800017e:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(YELLOW_1_GPIO_Port, YELLOW_1_Pin, GPIO_PIN_RESET);
@@ -128,8 +126,7 @@ void Phase1_YellowOn()
  8000190:	40010800 	.word	0x40010800
 
 08000194 <Phase1_YellowOff>:
-void Phase1_YellowOff()
-{
+void Phase1_YellowOff(){
  8000194:	b580      	push	{r7, lr}
  8000196:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(YELLOW_1_GPIO_Port, YELLOW_1_Pin, GPIO_PIN_SET);
@@ -145,8 +142,7 @@ void Phase1_YellowOff()
 
 080001ac <Phase1_RedOn>:
 
-void Phase1_RedOn()
-{
+void Phase1_RedOn(){
  80001ac:	b580      	push	{r7, lr}
  80001ae:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(RED_1_GPIO_Port, RED_1_Pin, GPIO_PIN_RESET);
@@ -161,8 +157,7 @@ void Phase1_RedOn()
  80001c0:	40010800 	.word	0x40010800
 
 080001c4 <Phase1_RedOff>:
-void Phase1_RedOff()
-{
+void Phase1_RedOff(){
  80001c4:	b580      	push	{r7, lr}
  80001c6:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(RED_1_GPIO_Port, RED_1_Pin, GPIO_PIN_SET);
@@ -178,8 +173,7 @@ void Phase1_RedOff()
 
 080001dc <Phase2_GreenOn>:
 
-void Phase2_GreenOn()
-{
+void Phase2_GreenOn(){
  80001dc:	b580      	push	{r7, lr}
  80001de:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(GREEN_2_GPIO_Port, GREEN_2_Pin, GPIO_PIN_RESET);
@@ -194,8 +188,7 @@ void Phase2_GreenOn()
  80001f0:	40010800 	.word	0x40010800
 
 080001f4 <Phase2_GreenOff>:
-void Phase2_GreenOff()
-{
+void Phase2_GreenOff(){
  80001f4:	b580      	push	{r7, lr}
  80001f6:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(GREEN_2_GPIO_Port, GREEN_2_Pin, GPIO_PIN_SET);
@@ -211,8 +204,7 @@ void Phase2_GreenOff()
 
 0800020c <Phase2_YellowOn>:
 
-void Phase2_YellowOn()
-{
+void Phase2_YellowOn(){
  800020c:	b580      	push	{r7, lr}
  800020e:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(YELLOW_2_GPIO_Port, YELLOW_2_Pin, GPIO_PIN_RESET);
@@ -227,8 +219,7 @@ void Phase2_YellowOn()
  8000220:	40010800 	.word	0x40010800
 
 08000224 <Phase2_YellowOff>:
-void Phase2_YellowOff()
-{
+void Phase2_YellowOff(){
  8000224:	b580      	push	{r7, lr}
  8000226:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(YELLOW_2_GPIO_Port, YELLOW_2_Pin, GPIO_PIN_SET);
@@ -244,8 +235,7 @@ void Phase2_YellowOff()
 
 0800023c <Phase2_RedOn>:
 
-void Phase2_RedOn()
-{
+void Phase2_RedOn(){
  800023c:	b580      	push	{r7, lr}
  800023e:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(RED_2_GPIO_Port, RED_2_Pin, GPIO_PIN_RESET);
@@ -260,8 +250,7 @@ void Phase2_RedOn()
  8000250:	40010800 	.word	0x40010800
 
 08000254 <Phase2_RedOff>:
-void Phase2_RedOff()
-{
+void Phase2_RedOff(){
  8000254:	b580      	push	{r7, lr}
  8000256:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(RED_2_GPIO_Port, RED_2_Pin, GPIO_PIN_SET);
