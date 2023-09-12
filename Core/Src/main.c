@@ -61,7 +61,7 @@ static void MX_GPIO_Init(void);
 #define 	PHASE_1_YELLOW	4 //Phase 2 red
 
 char status = INIT;
-//int count_red = 5;
+int count_red = 5;
 int count_yellow = 2;
 int count_green = 3;
 int counter = 0;
@@ -188,12 +188,73 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	int counter = 0;
-	while(1){
-		if(counter >= 10)
-			counter = 0;
-		display7SEG(counter++) ;
-		HAL_Delay (1000) ;
+int num = 0;
+while (1){
+	display7SEG(num);
+    switch (status){
+    case INIT:
+        counter = count_green;
+        num = count_red;
+        status = PHASE_2_GREEN;
+        Phase2_RedOff();
+        Phase2_YellowOff();
+        Phase1_GreenOff();
+        Phase1_YellowOff();
+        break;
+    case PHASE_2_GREEN:
+        counter--;
+        num--;
+        Phase2_GreenOn();
+        Phase1_RedOn();
+        Phase2_RedOff();
+        Phase1_YellowOff();
+        if (counter == 0){
+            counter = count_yellow;
+            status = PHASE_2_YELLOW;
+        }
+        break;
+    case PHASE_2_YELLOW:
+        counter--;
+        num--;
+        Phase2_GreenOff();
+        Phase2_YellowOn();
+        Phase1_RedOn();
+        if (counter == 0) {
+            counter = count_green;
+            status = PHASE_1_GREEN;
+            num = count_green;
+        }
+    break;
+    case PHASE_1_GREEN:
+        counter--;
+        num--;
+        Phase1_GreenOn();
+        Phase1_RedOff();
+        Phase2_YellowOff();
+        Phase2_RedOn();
+        if (counter == 0) {
+            counter = count_yellow;
+            status = PHASE_1_YELLOW;
+            num = count_yellow;
+        }
+    break;
+    case PHASE_1_YELLOW:
+        counter--;
+        num--;
+        Phase1_GreenOff();
+        Phase1_YellowOn();
+        Phase2_RedOn();
+        if (counter == 0) {
+            counter = count_green;
+            status = PHASE_2_GREEN;
+            num = count_red;
+        }
+    break;
+    default:
+        status = INIT;
+        break;
+    }
+    HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
