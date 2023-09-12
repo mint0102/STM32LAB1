@@ -54,7 +54,16 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+#define 	INIT	0
+#define		RED 	1;
+#define  	YELLOW 	2;
+#define 	GREEN	3
 
+int count_red = 5;
+int count_yellow = 2;
+int count_green = 3;
+int count = counter;
+int led_status = 1;
 /* USER CODE END 0 */
 
 /**
@@ -91,10 +100,13 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int counter = 2;
+  int count_red = 5;
+  int count_yellow = 2;
+  int count_green = 3;
   int count = counter;
   int led_status = 1;
   while(1){
+
 	count--;
 	if(count == 0){
 	  led_status = 1 - led_status;
