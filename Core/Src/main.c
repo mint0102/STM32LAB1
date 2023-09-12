@@ -42,7 +42,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+  int count = 2;
+  int counter = 0;
+  int led_status = 1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -91,14 +93,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int counter = 2;
-  int count = counter;
-  int led_status = 1;
+  counter = count;
   while(1){
-	count--;
+	counter--;
 	if(count == 0){
 	  led_status = 1 - led_status;
-	  count = counter;
+	  counter = count;
 	}
 	if(led_status == 0){
 	  HAL_GPIO_WritePin( LED_RED_GPIO_Port , LED_RED_Pin , GPIO_PIN_RESET);
