@@ -68,7 +68,7 @@ Discarded input sections
  .text          0x0000000000000000        0x0 ./Core/Src/main.o
  .data          0x0000000000000000        0x0 ./Core/Src/main.o
  .bss           0x0000000000000000        0x0 ./Core/Src/main.o
- .text.SetAllClock
+ .text.setAllClock
                 0x0000000000000000       0x18 ./Core/Src/main.o
  .text.clearNumberOnClock
                 0x0000000000000000       0xf0 ./Core/Src/main.o
@@ -1897,12 +1897,12 @@ LOAD d:/set stm32/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.m
  *(.text)
  .text          0x000000000800010c       0x40 d:/set stm32/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
  *(.text*)
- .text.DisplayClock
+ .text.displayClock
                 0x000000000800014c       0x68 ./Core/Src/main.o
-                0x000000000800014c                DisplayClock
- .text.ClearAllClock
+                0x000000000800014c                displayClock
+ .text.clearAllClock
                 0x00000000080001b4       0x18 ./Core/Src/main.o
-                0x00000000080001b4                ClearAllClock
+                0x00000000080001b4                clearAllClock
  .text.setNumberOnClock
                 0x00000000080001cc       0xf0 ./Core/Src/main.o
                 0x00000000080001cc                setNumberOnClock

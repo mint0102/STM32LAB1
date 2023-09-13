@@ -76,13 +76,13 @@ Disassembly of section .text:
  8000144:	20000010 	.word	0x20000010
  8000148:	08001340 	.word	0x08001340
 
-0800014c <DisplayClock>:
+0800014c <displayClock>:
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 int hour = 0, minute = 0, second = 0;
-void DisplayClock(int hour, int minute, int second){
+void displayClock(int hour, int minute, int second){
  800014c:	b580      	push	{r7, lr}
  800014e:	b086      	sub	sp, #24
  8000150:	af00      	add	r7, sp, #0
@@ -91,7 +91,7 @@ void DisplayClock(int hour, int minute, int second){
  8000156:	607a      	str	r2, [r7, #4]
 	int m = minute/5;
  8000158:	68bb      	ldr	r3, [r7, #8]
- 800015a:	4a15      	ldr	r2, [pc, #84]	; (80001b0 <DisplayClock+0x64>)
+ 800015a:	4a15      	ldr	r2, [pc, #84]	; (80001b0 <displayClock+0x64>)
  800015c:	fb82 1203 	smull	r1, r2, r2, r3
  8000160:	1052      	asrs	r2, r2, #1
  8000162:	17db      	asrs	r3, r3, #31
@@ -99,7 +99,7 @@ void DisplayClock(int hour, int minute, int second){
  8000166:	617b      	str	r3, [r7, #20]
 	int s = second/5;
  8000168:	687b      	ldr	r3, [r7, #4]
- 800016a:	4a11      	ldr	r2, [pc, #68]	; (80001b0 <DisplayClock+0x64>)
+ 800016a:	4a11      	ldr	r2, [pc, #68]	; (80001b0 <displayClock+0x64>)
  800016c:	fb82 1203 	smull	r1, r2, r2, r3
  8000170:	1052      	asrs	r2, r2, #1
  8000172:	17db      	asrs	r3, r3, #31
@@ -107,7 +107,7 @@ void DisplayClock(int hour, int minute, int second){
  8000176:	613b      	str	r3, [r7, #16]
 	if(second%5 == 0){
  8000178:	6879      	ldr	r1, [r7, #4]
- 800017a:	4b0d      	ldr	r3, [pc, #52]	; (80001b0 <DisplayClock+0x64>)
+ 800017a:	4b0d      	ldr	r3, [pc, #52]	; (80001b0 <displayClock+0x64>)
  800017c:	fb83 2301 	smull	r2, r3, r3, r1
  8000180:	105a      	asrs	r2, r3, #1
  8000182:	17cb      	asrs	r3, r1, #31
@@ -117,9 +117,9 @@ void DisplayClock(int hour, int minute, int second){
  800018a:	4413      	add	r3, r2
  800018c:	1aca      	subs	r2, r1, r3
  800018e:	2a00      	cmp	r2, #0
- 8000190:	d10a      	bne.n	80001a8 <DisplayClock+0x5c>
-		ClearAllClock();
- 8000192:	f000 f80f 	bl	80001b4 <ClearAllClock>
+ 8000190:	d10a      	bne.n	80001a8 <displayClock+0x5c>
+		clearAllClock();
+ 8000192:	f000 f80f 	bl	80001b4 <clearAllClock>
 		setNumberOnClock(hour);
  8000196:	68f8      	ldr	r0, [r7, #12]
  8000198:	f000 f818 	bl	80001cc <setNumberOnClock>
@@ -137,17 +137,17 @@ void DisplayClock(int hour, int minute, int second){
  80001ae:	bd80      	pop	{r7, pc}
  80001b0:	66666667 	.word	0x66666667
 
-080001b4 <ClearAllClock>:
-void SetAllClock(){
+080001b4 <clearAllClock>:
+void setAllClock(){
 	HAL_GPIO_WritePin(GPIOA, LED_0_Pin|LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin|LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin|LED_9_Pin|LED_10_Pin|LED_11_Pin,GPIO_PIN_RESET);
 }
-void ClearAllClock(){
+void clearAllClock(){
  80001b4:	b580      	push	{r7, lr}
  80001b6:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(GPIOA, LED_0_Pin|LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin|LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin|LED_9_Pin|LED_10_Pin|LED_11_Pin,GPIO_PIN_SET);
  80001b8:	2201      	movs	r2, #1
  80001ba:	f64f 71f0 	movw	r1, #65520	; 0xfff0
- 80001be:	4802      	ldr	r0, [pc, #8]	; (80001c8 <ClearAllClock+0x14>)
+ 80001be:	4802      	ldr	r0, [pc, #8]	; (80001c8 <clearAllClock+0x14>)
  80001c0:	f000 fc9e 	bl	8000b00 <HAL_GPIO_WritePin>
 }
  80001c4:	bf00      	nop
@@ -318,10 +318,10 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  ClearAllClock();
- 80002cc:	f7ff ff72 	bl	80001b4 <ClearAllClock>
+  clearAllClock();
+ 80002cc:	f7ff ff72 	bl	80001b4 <clearAllClock>
   while (1) {
-	  DisplayClock(hour, minute, second);
+	  displayClock(hour, minute, second);
  80002d0:	4b18      	ldr	r3, [pc, #96]	; (8000334 <main+0x78>)
  80002d2:	681b      	ldr	r3, [r3, #0]
  80002d4:	4a18      	ldr	r2, [pc, #96]	; (8000338 <main+0x7c>)
@@ -329,7 +329,7 @@ int main(void)
  80002d8:	4a18      	ldr	r2, [pc, #96]	; (800033c <main+0x80>)
  80002da:	6812      	ldr	r2, [r2, #0]
  80002dc:	4618      	mov	r0, r3
- 80002de:	f7ff ff35 	bl	800014c <DisplayClock>
+ 80002de:	f7ff ff35 	bl	800014c <displayClock>
 	  second++;
  80002e2:	4b16      	ldr	r3, [pc, #88]	; (800033c <main+0x80>)
  80002e4:	681b      	ldr	r3, [r3, #0]
@@ -381,7 +381,7 @@ int main(void)
 	  HAL_Delay(1000);
  800032a:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  800032e:	f000 f965 	bl	80005fc <HAL_Delay>
-	  DisplayClock(hour, minute, second);
+	  displayClock(hour, minute, second);
  8000332:	e7cd      	b.n	80002d0 <main+0x14>
  8000334:	20000028 	.word	0x20000028
  8000338:	2000002c 	.word	0x2000002c

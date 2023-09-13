@@ -1,6 +1,6 @@
-main.c:67:6:DisplayClock	32	static
-main.c:77:6:SetAllClock	8	static
-main.c:80:6:ClearAllClock	8	static
+main.c:67:6:displayClock	32	static
+main.c:77:6:setAllClock	8	static
+main.c:80:6:clearAllClock	8	static
 main.c:84:6:setNumberOnClock	16	static
 main.c:124:6:clearNumberOnClock	16	static
 main.c:170:5:main	8	static
