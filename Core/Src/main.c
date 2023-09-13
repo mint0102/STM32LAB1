@@ -48,18 +48,39 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+void SetAllClock();
+void clearAllClock();
+void setNumberOnClock(int num);
+void clearNumberOnClock(int num);
+void DisplayClock(int hour, int minute, int second);
 /* USER CODE BEGIN PFP */
+void SetAllClock();
+void ClearAllClock();
+void setNumberOnClock(int num);
+void clearNumberOnClock(int num);
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+int hour = 0, minute = 0, second = 0;
+void DisplayClock(int hour, int minute, int second){
+	int m = minute/5;
+	int s = second/5;
+	if(second%5 == 0){
+		ClearAllClock();
+		setNumberOnClock(hour);
+		setNumberOnClock(m);
+		setNumberOnClock(s);
+	}
+}
 void SetAllClock(){
 	HAL_GPIO_WritePin(GPIOA, LED_0_Pin|LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin|LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin|LED_9_Pin|LED_10_Pin|LED_11_Pin,GPIO_PIN_RESET);
 }
-void clearAllClock(){
+void ClearAllClock(){
 	HAL_GPIO_WritePin(GPIOA, LED_0_Pin|LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin|LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin|LED_9_Pin|LED_10_Pin|LED_11_Pin,GPIO_PIN_SET);
 }
+
 void setNumberOnClock(int num){
     switch(num){
     case 0:
@@ -100,7 +121,6 @@ void setNumberOnClock(int num){
         break;
     }
 }
-
 void clearNumberOnClock(int num){
     switch(num){
     case 0:
@@ -177,13 +197,21 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int counter = 0;
+  ClearAllClock();
   while (1) {
-	  if(counter >= 12){
-		  counter = 0;
-		  SetAllClock();
+	  DisplayClock(hour, minute, second);
+	  second++;
+	  if(second >= 60){
+		  second = 0;
+		  minute++;
 	  }
-	  clearNumberOnClock(counter++);
+	  if(minute >= 60){
+		  minute = 0;
+		  hour++;
+	  	  }
+	  if(hour >= 12){
+		  hour = 0;
+	  }
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
