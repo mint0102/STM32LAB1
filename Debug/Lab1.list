@@ -76,19 +76,19 @@ Disassembly of section .text:
  8000144:	20000010 	.word	0x20000010
  8000148:	080011b8 	.word	0x080011b8
 
-0800014c <SetAllClock>:
+0800014c <setAllClock>:
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void SetAllClock(){
+void setAllClock(){
  800014c:	b580      	push	{r7, lr}
  800014e:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(GPIOA, LED_0_Pin|LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin|LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin|LED_9_Pin|LED_10_Pin|LED_11_Pin,GPIO_PIN_RESET);
  8000150:	2200      	movs	r2, #0
  8000152:	f64f 71f0 	movw	r1, #65520	; 0xfff0
- 8000156:	4802      	ldr	r0, [pc, #8]	; (8000160 <SetAllClock+0x14>)
+ 8000156:	4802      	ldr	r0, [pc, #8]	; (8000160 <setAllClock+0x14>)
  8000158:	f000 fc0e 	bl	8000978 <HAL_GPIO_WritePin>
 }
  800015c:	bf00      	nop
@@ -153,8 +153,8 @@ int main(void)
  8000192:	687b      	ldr	r3, [r7, #4]
  8000194:	2b00      	cmp	r3, #0
  8000196:	d101      	bne.n	800019c <main+0x20>
-		  SetAllClock();
- 8000198:	f7ff ffd8 	bl	800014c <SetAllClock>
+		  setAllClock();
+ 8000198:	f7ff ffd8 	bl	800014c <setAllClock>
 	  if(led_status == 1)
  800019c:	687b      	ldr	r3, [r7, #4]
  800019e:	2b01      	cmp	r3, #1
