@@ -54,7 +54,7 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void SetAllClock(){
+void setAllClock(){
 	HAL_GPIO_WritePin(GPIOA, LED_0_Pin|LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin|LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin|LED_9_Pin|LED_10_Pin|LED_11_Pin,GPIO_PIN_RESET);
 }
 void clearAllClock(){
@@ -181,7 +181,7 @@ int main(void)
   while (1) {
 	  if(counter >= 12){
 		  counter = 0;
-		  SetAllClock();
+		  setAllClock();
 	  }
 	  clearNumberOnClock(counter++);
 	  HAL_Delay(1000);

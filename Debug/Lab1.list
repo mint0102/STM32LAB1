@@ -76,19 +76,19 @@ Disassembly of section .text:
  8000144:	20000010 	.word	0x20000010
  8000148:	0800128c 	.word	0x0800128c
 
-0800014c <SetAllClock>:
+0800014c <setAllClock>:
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void SetAllClock(){
+void setAllClock(){
  800014c:	b580      	push	{r7, lr}
  800014e:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(GPIOA, LED_0_Pin|LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin|LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin|LED_9_Pin|LED_10_Pin|LED_11_Pin,GPIO_PIN_RESET);
  8000150:	2200      	movs	r2, #0
  8000152:	f64f 71f0 	movw	r1, #65520	; 0xfff0
- 8000156:	4802      	ldr	r0, [pc, #8]	; (8000160 <SetAllClock+0x14>)
+ 8000156:	4802      	ldr	r0, [pc, #8]	; (8000160 <setAllClock+0x14>)
  8000158:	f000 fc78 	bl	8000a4c <HAL_GPIO_WritePin>
 }
  800015c:	bf00      	nop
@@ -275,8 +275,8 @@ int main(void)
 		  counter = 0;
  8000270:	2300      	movs	r3, #0
  8000272:	607b      	str	r3, [r7, #4]
-		  SetAllClock();
- 8000274:	f7ff ff6a 	bl	800014c <SetAllClock>
+		  setAllClock();
+ 8000274:	f7ff ff6a 	bl	800014c <setAllClock>
 	  }
 	  clearNumberOnClock(counter++);
  8000278:	687b      	ldr	r3, [r7, #4]

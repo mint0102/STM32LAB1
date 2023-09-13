@@ -1897,9 +1897,9 @@ LOAD d:/set stm32/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.m
  *(.text)
  .text          0x000000000800010c       0x40 d:/set stm32/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
  *(.text*)
- .text.SetAllClock
+ .text.setAllClock
                 0x000000000800014c       0x18 ./Core/Src/main.o
-                0x000000000800014c                SetAllClock
+                0x000000000800014c                setAllClock
  .text.clearNumberOnClock
                 0x0000000008000164       0xf0 ./Core/Src/main.o
                 0x0000000008000164                clearNumberOnClock
